@@ -1,0 +1,205 @@
+{
+   "_links": {
+      "root": {
+         "href": "/",
+         "name": "",
+         "templated": false
+      },
+      "self": {
+         "href": "/scans/b8b80a4d-05ad-4de1-9247-a3bae962a1d4/findings",
+         "name": "",
+         "templated": false
+      },
+      "help": {
+         "href": "https://docs.veracode.com/",
+         "name": "",
+         "templated": false
+      },
+      "create": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "start": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "details": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "upload": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "cancel": {
+         "href": "",
+         "name": "",
+         "templated": false
+      }
+   },
+   "scan_id": "b8b80a4d-05ad-4de1-9247-a3bae962a1d4",
+   "scan_status": "SUCCESS",
+   "message": "Scan successful. Results size: 7591 bytes",
+   "modules": [
+      "JS files within web.war",
+      "web.war"
+   ],
+   "modules_count": 2,
+   "findings": [
+      {
+         "title": "innerHTML",
+         "issue_id": 1000,
+         "gob": "B",
+         "severity": 3,
+         "issue_type_id": "taint",
+         "issue_type": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
+         "cwe_id": "80",
+         "display_text": "\u003cspan\u003eThis call to innerHTML() contains a cross-site scripting (XSS) flaw.  The application populates the HTTP response with untrusted input, allowing an attacker to embed malicious content, such as Javascript code, which will be executed in the context of the victim's browser.  XSS vulnerabilities are commonly exploited to steal or manipulate cookies, modify presentation of content, and compromise confidential information, with new attack vectors being discovered on a regular basis. \u003c/span\u003e \u003cspan\u003eUse contextual escaping on all untrusted data before using it to construct any portion of an HTTP response.  The escaping method should be chosen based on the specific use case of the untrusted data, otherwise it may not protect fully against the attack. For example, if the data is being written to the body of an HTML page, use HTML entity escaping; if the data is being written to an attribute, use attribute escaping; etc.  Both the OWASP Java Encoder library and the Microsoft AntiXSS library provide contextual escaping methods. For more details on contextual escaping, see https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md. In addition, as a best practice, always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href=\"https://cwe.mitre.org/data/definitions/79.html\"\u003eCWE\u003c/a\u003e \u003ca href=\"https://owasp.org/www-community/attacks/xss/\"\u003eOWASP\u003c/a\u003e \u003ca href=\"https://docs.veracode.com/r/review_cleansers\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+         "files": {
+            "source_file": {
+               "file": "theme/scripts/clientSideInclude.js",
+               "upload_file": "theme/scripts/clientSideInclude.js",
+               "line": 65,
+               "function_name": "processReqChange",
+               "qualified_function_name": "processReqChange",
+               "function_prototype": "processReqChange(: any, ...) : any",
+               "scope": "UNKNOWN"
+            }
+         },
+         "flaw_match": {
+            "procedure_hash": "1976444797",
+            "prototype_hash": "646177375",
+            "flaw_hash": "2599643419",
+            "flaw_hash_count": 1,
+            "flaw_hash_ordinal": 1,
+            "cause_hash": "2439302015",
+            "cause_hash_count": 1,
+            "cause_hash_ordinal": 1,
+            "cause_hash2": "438364638",
+            "cause_hash2_ordinal": "2"
+         },
+         "stack_dumps": {
+            "stack_dump": [
+               {
+                  "Frame": [
+                     {
+                        "FrameId": "0",
+                        "FunctionName": "processReqChange",
+                        "SourceFile": "theme/scripts/clientSideInclude.js",
+                        "SourceLine": "64",
+                        "SourceFileId": "7",
+                        "StatementText": {},
+                        "QualifiedFunctionName": "processReqChange",
+                        "FunctionPrototype": "processReqChange(: any, ...) : any"
+                     },
+                     {
+                        "FrameId": "1",
+                        "FunctionName": "processReqChange",
+                        "SourceFile": "theme/scripts/clientSideInclude.js",
+                        "SourceLine": "64",
+                        "SourceFileId": "7",
+                        "StatementText": {},
+                        "VarNames": "/**X-VC scoperef targetid=\"133188\" */!main::req/**X-VC /scoperef */",
+                        "QualifiedFunctionName": "processReqChange",
+                        "FunctionPrototype": "processReqChange(: any, ...) : any"
+                     },
+                     {
+                        "FrameId": "2",
+                        "FunctionName": "clientSideInclude",
+                        "SourceFile": "theme/scripts/clientSideInclude.js",
+                        "SourceLine": "25",
+                        "SourceFileId": "7",
+                        "StatementText": {},
+                        "VarNames": "/**X-VC scoperef targetid=\"133238\" */r/**X-VC /scoperef */",
+                        "QualifiedFunctionName": "clientSideInclude",
+                        "FunctionPrototype": "clientSideInclude(: any,  : any,  : any, ...) : any"
+                     },
+                     {
+                        "FrameId": "3",
+                        "FunctionName": "clientSideInclude",
+                        "SourceFile": "theme/scripts/clientSideInclude.js",
+                        "SourceLine": "25",
+                        "SourceFileId": "7",
+                        "StatementText": {},
+                        "VarNames": "XMLHttpRequest(/**X-VC scoperef targetid=\"133238\" */r/**X-VC /scoperef */)",
+                        "QualifiedFunctionName": "clientSideInclude",
+                        "FunctionPrototype": "clientSideInclude(: any,  : any,  : any, ...) : any"
+                     }
+                  ]
+               }
+            ]
+         },
+         "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/80.html"
+      },
+      {
+         "title": "java.lang.Throwable.printStackTrace",
+         "issue_id": 1000,
+         "gob": "B",
+         "severity": 2,
+         "issue_type_id": "taint",
+         "issue_type": "Information Exposure Through an Error Message",
+         "cwe_id": "209",
+         "display_text": "\u003cspan\u003e The application calls the java.lang.Throwable.printStackTrace() function, which may expose information about the application logic or other details such as the names and versions of the application container and associated components.  This information can be useful in executing other attacks and can also enable the attacker to target known vulnerabilities in application components. printStackTrace() was called on the e object, which contains data from an error message (possibly containing untrusted data). The data from an error message (possibly containing untrusted data) originated from an earlier call to java.lang.Throwable.printStackTrace. The data from an error message (possibly containing untrusted data) is directed into an output stream returned by javax.servlet.jsp.JspContext.getOut.\u003c/span\u003e \u003cspan\u003eEnsure that error codes or other messages returned to end users are not overly verbose.  Sanitize all messages of any sensitive information that is not absolutely necessary.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href=\"https://cwe.mitre.org/data/definitions/209.html\"\u003eCWE\u003c/a\u003e\u003c/span\u003e",
+         "files": {
+            "source_file": {
+               "file": "roller-ui/tools/dstest.jsp",
+               "upload_file": "roller-ui/tools/dstest.jsp",
+               "line": 44,
+               "function_name": "_jspService",
+               "qualified_function_name": "com.veracode.compiledjsp.xwebwar.roller_002dui.tools.dstest_jsp._jspService",
+               "function_prototype": "void _jspService(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)",
+               "scope": "com.veracode.compiledjsp.xwebwar.roller_002dui.tools.dstest_jsp"
+            }
+         },
+         "flaw_match": {
+            "procedure_hash": "142984861",
+            "prototype_hash": "165964154",
+            "flaw_hash": "3765405848",
+            "flaw_hash_count": 2,
+            "flaw_hash_ordinal": 1,
+            "cause_hash": "153293750",
+            "cause_hash_count": 1,
+            "cause_hash_ordinal": 1,
+            "cause_hash2": "1522093433",
+            "cause_hash2_ordinal": "2"
+         },
+         "stack_dumps": {
+            "stack_dump": [
+               {
+                  "Frame": [
+                     {
+                        "FrameId": "0",
+                        "FunctionName": "_jspService",
+                        "SourceFile": "roller-ui/tools/dstest.jsp",
+                        "SourceLine": "43",
+                        "SourceFileId": "28",
+                        "StatementText": {},
+                        "QualifiedFunctionName": "com.veracode.compiledjsp.xwebwar.roller_002dui.tools.dstest_jsp._jspService",
+                        "FunctionPrototype": "void _jspService(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)",
+                        "RelativeLocation": "47"
+                     },
+                     {
+                        "FrameId": "1",
+                        "FunctionName": "_jspService",
+                        "SourceFile": "roller-ui/tools/dstest.jsp",
+                        "SourceLine": "43",
+                        "SourceFileId": "28",
+                        "StatementText": {},
+                        "VarNames": "/**X-VC scoperef targetid=\"37055\" */e/**X-VC /scoperef */.printStackTrace(new java.io.PrintWriter(/**X-VC scoperef targetid=\"36538\" */out/**X-VC /scoperef */))",
+                        "QualifiedFunctionName": "com.veracode.compiledjsp.xwebwar.roller_002dui.tools.dstest_jsp._jspService",
+                        "FunctionPrototype": "void _jspService(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)",
+                        "RelativeLocation": "47"
+                     }
+                  ]
+               }
+            ]
+         },
+         "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/209.html"
+      }
+   ],
+   "selected_modules": []
+}
